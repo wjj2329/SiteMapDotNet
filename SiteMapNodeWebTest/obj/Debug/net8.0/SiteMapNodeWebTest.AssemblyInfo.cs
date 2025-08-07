@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SiteMapNodeWebTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccfa3297240498046be2dd927337e51e47475a15")]
 [assembly: System.Reflection.AssemblyProductAttribute("SiteMapNodeWebTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SiteMapNodeWebTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
