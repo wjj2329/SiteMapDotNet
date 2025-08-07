@@ -2,7 +2,7 @@
 {
     public class SiteMapNode
     {
-        public SiteMapNode RootNode; //pointer to parrent rootnode
+        public SiteMapNode RootNode; //pointer to parent rootnode
         public string Title;
         public List<SiteMapNode> Children;
         public List<SiteMapNode> Parent;
