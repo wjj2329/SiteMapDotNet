@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SiteMapNodeWebTest/obj/Debug/net8.0/SiteMapNodeWebTest.GeneratedMSBuildEditorConfig.editorconfig
+/SiteMapNodeNetCore/obj/Debug/net8.0/SiteMapNodeNetCore.AssemblyInfo.cs
+/SiteMapNodeNetCore/obj/Debug/net8.0/SiteMapNodeNetCore.AssemblyInfoInputs.cache
+/SiteMapNodeNetCore/obj/Debug/net8.0/SiteMapNodeNetCore.GeneratedMSBuildEditorConfig.editorconfig
+/SiteMapNodeNetCore/obj/Debug/net8.0/SiteMapNodeNetCore.assets.cache
+/SiteMapNodeWebTest/obj/Debug/net8.0/SiteMapNodeWebTest.AssemblyInfoInputs.cache
+/SiteMapNodeWebTest/obj/Debug/net8.0/SiteMapNodeWebTest.assets.cache
+/SiteMapNodeWebTest/obj/Debug/net8.0/rpswa.dswa.cache.json
+/SiteMapNodeWebTest/obj/Debug/net8.0/SiteMapNodeWebTest.AssemblyInfo.cs
