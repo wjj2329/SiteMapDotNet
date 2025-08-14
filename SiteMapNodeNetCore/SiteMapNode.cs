@@ -9,18 +9,18 @@ namespace SiteMapNodeNetCore
         [XmlElement("siteMapNode")]
         public List<SiteMapNode> ChildNodes { get; set; } = new();
         [XmlAttribute("title")]
-        public string Title;
+        public string? Title;
         [XmlAttribute("description")]
-        public string Description;
+        public string? Description;
         [XmlAttribute("url")]
-        public string Url;
+        public required string Url;
         [XmlAttribute("roles")]
-        public string RolesString;
+        public string? RolesString;
         [XmlAttribute("resourceKey")]
-        public string ResourceKey;
+        public string? ResourceKey;
         // Capture any additional attributes
         [XmlAnyAttribute]
-        public XmlAttribute[] AdditionalAttributes { get; set; }
+        public XmlAttribute[]? AdditionalAttributes { get; set; }
         public string this[string attributeName]
         {
             get
@@ -46,7 +46,7 @@ namespace SiteMapNodeNetCore
             }
         }
 
-        private SiteMapNode parent_node = null;
+        private SiteMapNode? parent_node;
         private void SetParentNode(SiteMapNode node)
         {
             parent_node = node;
@@ -54,14 +54,14 @@ namespace SiteMapNodeNetCore
 
         public SiteMapNode ParentNode => parent_node;
 
-        private SiteMapNode previous_sibling = null;
+        private SiteMapNode? previous_sibling;
         private void SetPreviousSibling(SiteMapNode node)
         {
             previous_sibling = node;
         }
         public SiteMapNode PreviousSibling => previous_sibling;
 
-        private SiteMapNode next_sibling = null;
+        private SiteMapNode? next_sibling;
         private void SetNextSibling(SiteMapNode node)
         {
             next_sibling = node;
@@ -100,45 +100,6 @@ namespace SiteMapNodeNetCore
             }
             return false;
         }
-        /*public virtual SiteMapNode Clone()
-        {
-            ArrayList roles = null;
-            NameValueCollection attributes = null;
-            NameValueCollection explicitResourceKeys = null;
-            if (Roles != null)
-            {
-                roles = new ArrayList(Roles);
-            }
-
-            if (_attributes != null)
-            {
-                attributes = new NameValueCollection(_attributes);
-            }
-
-            if (_resourceKeys != null)
-            {
-                explicitResourceKeys = new NameValueCollection(_resourceKeys);
-            }
-
-            return new SiteMapNode(_provider, Key, Url, Title, Description, roles, attributes, explicitResourceKeys, _resourceKey);
-        }
-        public virtual SiteMapNode Clone(bool cloneParentNodes)
-        {
-            SiteMapNode siteMapNode = Clone();
-            if (cloneParentNodes)
-            {
-                SiteMapNode siteMapNode2 = siteMapNode;
-                SiteMapNode parentNode = ParentNode;
-                while (parentNode != null)
-                {
-                    SiteMapNode siteMapNode4 = (siteMapNode2.ParentNode = parentNode.Clone());
-                    siteMapNode4.ChildNodes = new SiteMapNodeCollection(siteMapNode2);
-                    parentNode = parentNode.ParentNode;
-                    siteMapNode2 = siteMapNode4;
-                }
-            }
-
-            return siteMapNode;
-        }*/
+        
     }
 }
