@@ -1,11 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
-	<siteMapNode title="Home" url="~/Home/Index" description="Home Page">
-		<siteMapNode title="About" url="~/Home/About" description="About Us Page" />
-		<siteMapNode title="Contact" url="~/Home/Contact" description="Contact Page" />
-		<siteMapNode title="Products" url="~/Products/Index" description="Product Catalog">
-			<siteMapNode title="Category A" url="~/Products/CategoryA" />
-			<siteMapNode title="Category B" url="~/Products/CategoryB" />
-		</siteMapNode>
-	</siteMapNode>
+
+  <!-- Root node -->
+  <siteMapNode
+      title="Home Page"
+      description="The main landing page of the site"
+      url="~/Home/Index"
+      roles="Admin,User,Guest"
+      resourceKey="Home_Res"
+      customAttr="foo"
+      anotherAttr="bar">
+
+    <!-- First child branch -->
+    <siteMapNode
+        title="About Us"
+        description="Learn about our company"
+        url="~/Home/About"
+        roles="Admin,User"
+        resourceKey="About_Res">
+
+      <siteMapNode
+          title="Our History"
+          description="Company history page"
+          url="~/Home/History"
+          roles="User"
+          resourceKey="History_Res" />
+
+      <siteMapNode
+          title="Team &amp; Staff"
+          description="Meet our team"
+          url="~/Home/Team"
+          roles="Admin,User"
+          resourceKey="Team_Res" />
+    </siteMapNode>
+
+    <!-- Second child branch -->
+    <siteMapNode
+        title="Products"
+        description="What we offer"
+        url="~/Products/Index"
+        roles="Admin,User"
+        resourceKey="Products_Res">
+
+      <siteMapNode
+          title="Product A"
+          description="Details about Product A"
+          url="~/Products/A"
+          roles="User"
+          resourceKey="ProdA_Res" />
+
+      <siteMapNode
+          title="Product B"
+          description="Details about Product B"
+          url="~/Products/B"
+          roles="Admin"
+          resourceKey="ProdB_Res" />
+    </siteMapNode>
+
+    <!-- Third child branch -->
+    <siteMapNode
+        title="Contact Us"
+        description="How to reach us"
+        url="~/Home/Contact"
+        roles="Guest,User"
+        resourceKey="Contact_Res" />
+  </siteMapNode>
+
 </siteMap>

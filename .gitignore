@@ -496,3 +496,5 @@ FodyWeavers.xsd
 /SiteMapNetFWTest/bin/WebGrease.dll
 /SiteMapNetFWTest/obj/Debug/SiteMapN.80A0ECDB.Up2Date
 /.vs/SiteMapNetCore/v17/.futdcache.v2
+/SiteMapNetFWTest/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/SiteMapNetFWTest/Properties/AssemblyInfo.cs

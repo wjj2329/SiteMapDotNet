@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 
 namespace SiteMapNetCore.Controllers
@@ -10,8 +7,7 @@ namespace SiteMapNetCore.Controllers
     {
         public ActionResult Index()
         {
-            var c = SiteMap.RootNode;
-            //c.
+            var c = SiteMap.CurrentNode;
             return View();
         }
 

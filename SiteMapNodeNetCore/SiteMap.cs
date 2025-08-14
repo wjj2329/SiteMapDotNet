@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml.Serialization;
 
 namespace SiteMapNodeNetCore
 {
+    [XmlRoot("siteMap", Namespace = "http://schemas.microsoft.com/AspNet/SiteMap-File-1.0")]
     public class SiteMap
     {
-        private SiteMapNode _rootNode;
-        public SiteMapNode RootNode { get { return _rootNode; } }
+        [XmlElement("siteMapNode")]
+        public List<SiteMapNode> Children { get; set; } = new();
 
-        public void ReadWebSiteMap(string siteMapFileName) {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(siteMapFileName);
-            XmlNode root = doc.DocumentElement;
-            _rootNode = new SiteMapNode();
-        }
 
     }
 }
