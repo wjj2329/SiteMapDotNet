@@ -5,7 +5,6 @@
     <PackageId>SiteMapNodeNetCore</PackageId>
     <Version>1.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
