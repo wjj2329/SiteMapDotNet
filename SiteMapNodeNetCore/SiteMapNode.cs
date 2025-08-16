@@ -1,4 +1,7 @@
-﻿using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace SiteMapNodeNetCore
@@ -7,13 +10,13 @@ namespace SiteMapNodeNetCore
     public class SiteMapNode
     {
         [XmlElement("siteMapNode")]
-        public List<SiteMapNode> ChildNodes { get; set; } = new();
+        public List<SiteMapNode> ChildNodes { get; set; }
         [XmlAttribute("title")]
         public string? Title;
         [XmlAttribute("description")]
         public string? Description;
         [XmlAttribute("url")]
-        public required string Url;
+        public string Url;
         [XmlAttribute("roles")]
         public string? RolesString;
         [XmlAttribute("resourceKey")]
@@ -74,7 +77,7 @@ namespace SiteMapNodeNetCore
         {
             root_node = node;
         }
-        public string Key => Url == null || Url.Length == 0 ? "" : Url[1..];
+        public string Key => Url == null || Url.Length == 0 ? "" : Url.Substring(1);
         public void OnInitialized(SiteMapNode root)
         {
             SeRootNode(root);
