@@ -103,6 +103,6 @@ namespace SiteMapNodeNetCore
             }
             return false;
         }
-        
+
     }
 }

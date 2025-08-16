@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.Xml.Serialization;
-using Microsoft.AspNetCore.Http;
 
 namespace SiteMapNodeNetCore
 {
@@ -14,7 +14,7 @@ namespace SiteMapNodeNetCore
         public SiteMapNode CurrentNode(string path) => _siteMapTable[path];
 
         private Dictionary<string, SiteMapNode> _siteMapTable = new Dictionary<string, SiteMapNode>();
-        
+
         public void OnInitialized()
         {
             Queue<SiteMapNode> myQueue = new Queue<SiteMapNode>();
@@ -23,7 +23,7 @@ namespace SiteMapNodeNetCore
             {
                 SiteMapNode temp = myQueue.Dequeue();
                 _siteMapTable.Add(temp.Url, temp);
-                foreach(SiteMapNode node in temp.ChildNodes)
+                foreach (SiteMapNode node in temp.ChildNodes)
                 {
                     myQueue.Enqueue(node);
                 }

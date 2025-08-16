@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <PackageId>SiteMapNodeNetCore</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
     <RepositoryUrl>https://github.com/wjj2329/SiteMapNetCore</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <Nullable>enable</Nullable>
+    <PackageIcon>moonstone.png</PackageIcon>
+    <PackageTags>sitemap;aspnetcore;mvc;navigation;seo;xml;site;web;url;routing;netcore;net8;netstandard; sitemapnode</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <LangVersion>8.0</LangVersion>
@@ -29,5 +34,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="moonstone.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>
