@@ -1,0 +1,1 @@
+This is library meant to be as close as possible to be a replacement for the SiteMap functionality found in NETFW in System.Web see https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1
