@@ -7,6 +7,7 @@ namespace SiteMapNetCore.Controllers
     {
         public ActionResult Index()
         {
+            var temp = HttpContext.Request.Url;
             var c = SiteMap.CurrentNode;
             return View();
         }
@@ -14,6 +15,8 @@ namespace SiteMapNetCore.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            var temp = HttpContext.Request.Url;
+            var c = SiteMap.CurrentNode;
 
             return View();
         }
@@ -21,6 +24,7 @@ namespace SiteMapNetCore.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            var temp = HttpContext.Request.Url;
 
             return View();
         }

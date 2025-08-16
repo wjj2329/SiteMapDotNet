@@ -18,7 +18,7 @@ namespace SiteMapNetCoreTest
         {
             var helper = new SiteMapHelper();
             _siteMap = helper.ReadWebSiteMap("Web.sitemap");
-            _homeNode = _siteMap.Children[0];
+            _homeNode = _siteMap.RootNode;
             _aboutUsNode = _homeNode.ChildNodes[0];
             _ourHistoryNode = _aboutUsNode.ChildNodes[0];
             _teamNode = _aboutUsNode.ChildNodes[1];
@@ -32,8 +32,7 @@ namespace SiteMapNetCoreTest
         public void TestSiteMapLoaded()
         {
             Assert.NotNull(_siteMap);
-            Assert.NotNull(_siteMap.Children);
-            Assert.True(_siteMap.Children.Count > 0);
+            Assert.NotNull(_siteMap.RootNode);
         }
 
         [Fact]

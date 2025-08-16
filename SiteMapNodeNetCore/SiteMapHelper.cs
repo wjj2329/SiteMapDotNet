@@ -20,8 +20,10 @@ namespace SiteMapNodeNetCore
         }
         private void InitializeSiteMapNodes(SiteMap c)
         {
-            Queue<SiteMapNode> nodesQueue = new Queue<SiteMapNode>(c.Children);
-            SiteMapNode parent = c.Children[0];
+            c.OnInitialized();
+            Queue<SiteMapNode> nodesQueue = new Queue<SiteMapNode>();
+            nodesQueue.Enqueue(c.RootNode);
+            SiteMapNode parent = c.RootNode;
             while (nodesQueue.Count > 0)
             {
                 var currentNode = nodesQueue.Dequeue();

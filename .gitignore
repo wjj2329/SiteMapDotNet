@@ -498,3 +498,5 @@ FodyWeavers.xsd
 /.vs/SiteMapNetCore/v17/.futdcache.v2
 /SiteMapNetFWTest/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /SiteMapNetFWTest/Properties/AssemblyInfo.cs
+/SiteMapNodeNetCore/obj/SiteMapNodeNetCore.csproj.nuget.g.targets
+/SiteMapNodeNetCore/bin/Debug/net8.0/SiteMapNodeNetCore.deps.json
