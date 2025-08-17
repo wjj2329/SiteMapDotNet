@@ -1,10 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace SiteMapNodeNetCore
+namespace SiteMapNetCore
 {
     [XmlRoot("siteMapNode")]
     public class SiteMapNode

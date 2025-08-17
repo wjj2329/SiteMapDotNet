@@ -1,4 +1,4 @@
-using SiteMapNodeNetCore;
+using SiteMapNetCore;
 
 namespace SiteMapNetCoreTest
 {

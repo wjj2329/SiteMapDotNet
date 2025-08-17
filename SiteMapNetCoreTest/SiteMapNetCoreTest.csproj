@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SiteMapNodeNetCore\SiteMapNodeNetCore.csproj" />
+    <ProjectReference Include="..\SiteMapNodeNetCore\SiteMapNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
