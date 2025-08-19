@@ -2,9 +2,9 @@
 
   <!-- Global Properties -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SiteMapNodeNetCore</PackageId>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -30,10 +30,6 @@
   <!-- Per-Target Framework Settings -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <!-- Dependencies (alphabetized) -->
