@@ -16,8 +16,7 @@ namespace SiteMapNetCoreTest
 
         public SiteMapNetCoreTests()
         {
-            var helper = new SiteMapHelper();
-            _siteMap = helper.ReadWebSiteMap("Web.sitemap");
+            _siteMap = SiteMapHelper.ReadWebSiteMap("Web.sitemap");
             _homeNode = _siteMap.RootNode;
             _aboutUsNode = _homeNode.ChildNodes[0];
             _ourHistoryNode = _aboutUsNode.ChildNodes[0];

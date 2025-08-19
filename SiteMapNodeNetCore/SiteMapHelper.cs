@@ -5,9 +5,9 @@ using System.Xml.Serialization;
 
 namespace SiteMapNetCore
 {
-    public class SiteMapHelper :ISiteMapHelper
+    public class SiteMapHelper 
     {
-        public SiteMap ReadWebSiteMap(string siteMapFileName)
+        public static SiteMap ReadWebSiteMap(string siteMapFileName)
         {
             var serializer = new XmlSerializer(typeof(SiteMap));
             using (var reader = new StreamReader(siteMapFileName))
@@ -21,7 +21,7 @@ namespace SiteMapNetCore
                 throw new InvalidOperationException("Deserialization returned null or incorrect type.");
             }
         }
-        private void InitializeSiteMapNodes(SiteMap c)
+        private static void InitializeSiteMapNodes(SiteMap c)
         {
             c.OnInitialized();
             Queue<SiteMapNode> nodesQueue = new Queue<SiteMapNode>();
