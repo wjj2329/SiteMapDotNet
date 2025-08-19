@@ -1,1 +1,62 @@
-This is library meant to be as close as possible to be a replacement for the SiteMap functionality found in NETFW in System.Web see https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1
+# SiteMapNodeNetCore
+
+This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET Core** projects.
+
+See the official .NET Framework documentation here: [System.Web.SiteMap](https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1).
+
+---
+
+## Installation
+
+Install via NuGet:
+
+```bash
+dotnet add package SiteMapNodeNetCore
+```
+
+---
+
+## Usage
+
+To register the SiteMap in your **Dependency Injection (DI)** container:
+
+```csharp
+builder.Services.AddSiteMap();
+```
+
+By default, this will look for a `web.sitemap` file in your project's **content root**.
+
+You can also provide a **custom path** to your sitemap file:
+
+```csharp
+builder.Services.AddSiteMapFromPath("Config/custom.sitemap");
+```
+
+---
+
+## Features
+
+* Supports **.NET Standard 2.0**, compatible with .NET Core projects.
+* Provides **SiteMap** and **SiteMapNode** classes similar to the original System.Web implementation.
+* Easy integration via DI with optional custom sitemap file path.
+
+---
+
+## Example
+
+```csharp
+// Startup.cs or Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+// Registers the SiteMap using default file path
+builder.Services.AddSiteMap();
+
+// Or using a custom sitemap file
+builder.Services.AddSiteMapFromPath("Config/my-sitemap.xml");
+
+var app = builder.Build();
+```
+
+---
+
+💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMapFromPath`.
