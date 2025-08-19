@@ -1,45 +1,53 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Global Properties -->
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <PackageId>SiteMapNodeNetCore</PackageId>
     <Version>3.0.0</Version>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
-    <RepositoryUrl>https://github.com/wjj2329/SiteMapNetCore</RepositoryUrl>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Deterministic>true</Deterministic>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <Nullable>enable</Nullable>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>moonstone.png</PackageIcon>
-    <PackageTags>sitemap;aspnetcore;mvc;navigation;seo;xml;site;web;url;routing;netcore;net8;netstandard; sitemapnode</PackageTags>
+    <PackageTags>sitemap;aspnetcore;mvc;navigation;seo;xml;site;web;url;routing;netcore;net8;netstandard;sitemapnode</PackageTags>
+    <RepositoryUrl>https://github.com/wjj2329/SiteMapNetCore</RepositoryUrl>
+
+    <!-- Compilation & Debug -->
+    <Nullable>enable</Nullable>
+    <Deterministic>true</Deterministic>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+    <!-- Implicit Usings -->
+    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
+
+  <!-- Per-Target Framework Settings -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <ImplicitUsings>disable</ImplicitUsings>
-  </PropertyGroup>
+
+  <!-- Dependencies (alphabetized) -->
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="moonstone.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.8" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
+
+  <!-- Files to include in NuGet package -->
+  <ItemGroup>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="moonstone.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
