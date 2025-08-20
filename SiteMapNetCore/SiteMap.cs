@@ -52,11 +52,11 @@ namespace SiteMapNetCore
             while (myQueue.Count > 0)
             {
                 SiteMapNode temp = myQueue.Dequeue();
+                temp.Url = FormatUrl(temp.Url);
                 if (_siteMapTable.ContainsKey(temp.Url))
                 {
                     throw new Exception($"Multiple nodes with the same URL {temp.Url} were found. XmlSiteMapProvider requires that sitemap nodes have unique URLs.");
                 }
-                temp.Url = FormatUrl(temp.Url);
                 _siteMapTable.Add(temp.Url, temp);
                 foreach (SiteMapNode node in temp.ChildNodes)
                 {
