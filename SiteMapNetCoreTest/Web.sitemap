@@ -64,6 +64,21 @@
         url="~/Home/Contact"
         roles="Guest,User"
         resourceKey="Contact_Res" />
+    <!-- Fourth child branch -->
+    <siteMapNode
+        title="Find Us"
+        description="How to find us"
+        url="/Home/Find"
+        roles="Guest,User"
+        resourceKey="Find_Res" />
+
+    <!-- Fifth child branch -->
+    <siteMapNode
+       title="Like Us"
+       description="How to like us"
+       url="Home/Like"
+       roles="Guest,User"
+       resourceKey="Like_Res" />
   </siteMapNode>
 
 </siteMap>
