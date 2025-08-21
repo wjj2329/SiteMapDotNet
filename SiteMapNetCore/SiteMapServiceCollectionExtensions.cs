@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SiteMapNetCore;
 using System.IO;
-using Microsoft.Extensions.Hosting;
 
 public static class SiteMapServiceCollectionExtensions
 {

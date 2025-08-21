@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace SiteMapNetCore
@@ -9,61 +8,60 @@ namespace SiteMapNetCore
     [XmlRoot("siteMap", Namespace = "http://schemas.microsoft.com/AspNet/SiteMap-File-1.0")]
     public class SiteMap
     {
+        // -------------------------
+        // Public properties
+        // -------------------------
         [XmlElement("siteMapNode")]
-        public SiteMapNode RootNode { get; set; }
-        //HttpContext is no longer a static object we can get whenever in netCore. It must be passed along
-        public SiteMapNode CurrentNode(HttpContext httpContext)
+        public required SiteMapNode RootNode { get; init; }
+
+        // -------------------------
+        // Private fields
+        // -------------------------
+        private readonly Dictionary<string, SiteMapNode> _siteMapTable = new();
+
+        // -------------------------
+        // Public methods
+        // -------------------------
+        public SiteMapNode? CurrentNode(HttpContext httpContext)
         {
-            if (httpContext == null || httpContext.Request == null || httpContext.Request.Path == null)
-            {
+            if (httpContext?.Request?.Path == null)
                 throw new ArgumentNullException(nameof(httpContext), "HttpContext or Request Path cannot be null.");
-            }
+
             return GetNodeByPath(httpContext.Request.Path.ToString());
         }
-        private SiteMapNode GetNodeByPath(string path)
-        {
-            if (!_siteMapTable.ContainsKey(path))
-            {
-                return null;
-            }
-            return _siteMapTable[path];
-        }
 
-        private Dictionary<string, SiteMapNode> _siteMapTable = new Dictionary<string, SiteMapNode>();
-        private string FormatUrl(string url)
-        {
-            if (string.IsNullOrEmpty(url))
-            {
-                return string.Empty;
-            }
-            if (url.StartsWith("~/")) // ASP.NET style URL
-                return url.Substring(1);
-
-            if (url.StartsWith("/")) // Starting with a slash
-                return url;
-            StringBuilder sb = new StringBuilder(url);
-            sb.Insert(0, '/'); // Prepend a slash if it doesn't start with one
-            return sb.ToString();
-        }
         public void OnInitialized()
         {
-            Queue<SiteMapNode> myQueue = new Queue<SiteMapNode>();
-            myQueue.Enqueue(RootNode);
-            while (myQueue.Count > 0)
+            if (RootNode == null) throw new InvalidOperationException("RootNode is null.");
+
+            var nodesQueue = new Queue<SiteMapNode>();
+            nodesQueue.Enqueue(RootNode);
+
+            while (nodesQueue.Count > 0)
             {
-                SiteMapNode temp = myQueue.Dequeue();
-                temp.Url = FormatUrl(temp.Url);
-                if (_siteMapTable.ContainsKey(temp.Url))
+                var node = nodesQueue.Dequeue();
+
+                if (_siteMapTable.ContainsKey(node.Url))
                 {
-                    throw new Exception($"Multiple nodes with the same URL {temp.Url} were found. XmlSiteMapProvider requires that sitemap nodes have unique URLs.");
+                    throw new InvalidOperationException(
+                        $"Multiple nodes with the same URL '{node.Url}' were found. Sitemap nodes must have unique URLs.");
                 }
-                _siteMapTable.Add(temp.Url, temp);
-                foreach (SiteMapNode node in temp.ChildNodes)
+
+                _siteMapTable.Add(node.Url, node);
+
+                foreach (var child in node.ChildNodes)
                 {
-                    myQueue.Enqueue(node);
+                    nodesQueue.Enqueue(child);
                 }
             }
         }
 
+        // -------------------------
+        // Private helpers
+        // -------------------------
+        private SiteMapNode? GetNodeByPath(string path)
+        {
+            return _siteMapTable.TryGetValue(path, out var node) ? node : null;
+        }
     }
 }

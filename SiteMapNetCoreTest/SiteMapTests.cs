@@ -11,62 +11,68 @@ namespace SiteMapNetCoreTest
         {
             _siteMap = SiteMapHelper.ReadWebSiteMap("Web.sitemap");
         }
+
+        private static DefaultHttpContext CreateHttpContext(string path)
+        {
+            var context = new DefaultHttpContext();
+            context.Request.Path = path;
+            return context;
+        }
+
         [Fact]
         public void CurrentNode_ReturnsContactNode()
         {
-            var httpContextHomeFullPath = new DefaultHttpContext();
-            httpContextHomeFullPath.Request.Path = "/Home/Contact";
-          
-            var contactUsNode = _siteMap.CurrentNode(httpContextHomeFullPath);
-         
-            // Assert
-            Assert.NotNull(contactUsNode);
-            Assert.Equal("Contact Us", contactUsNode.Title);
-            Assert.Equal("How to reach us", contactUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, contactUsNode.Roles);
-            Assert.Equal("/Home/Contact", contactUsNode.Url);
-            Assert.Equal("Contact_Res", contactUsNode.ResourceKey);
+            var context = CreateHttpContext("/Home/Contact");
+            var node = _siteMap.CurrentNode(context);
+
+            Assert.NotNull(node);
+            Assert.Equal("Contact Us", node!.Title);
+            Assert.Equal("How to reach us", node.Description);
+            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal("/Home/Contact", node.Url);
+            Assert.Equal("Contact_Res", node.ResourceKey);
         }
 
         [Fact]
-        public void CurrentNode_ReturnsFindNode() //Test other two types
+        public void CurrentNode_ReturnsFindNode()
         {
-            var httpContextHomeFullPath = new DefaultHttpContext();
-            httpContextHomeFullPath.Request.Path = "/Home/Find";
+            var context = CreateHttpContext("/Home/Find");
+            var node = _siteMap.CurrentNode(context);
 
-            var findUsNode = _siteMap.CurrentNode(httpContextHomeFullPath);
-
-            Assert.Equal("Find Us", findUsNode.Title);
-            Assert.Equal("How to find us", findUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, findUsNode.Roles);
-            Assert.Equal("/Home/Find", findUsNode.Url);
-            Assert.Equal("Find_Res", findUsNode.ResourceKey);
+            Assert.NotNull(node);
+            Assert.Equal("Find Us", node!.Title);
+            Assert.Equal("How to find us", node.Description);
+            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal("/Home/Find", node.Url);
+            Assert.Equal("Find_Res", node.ResourceKey);
         }
 
         [Fact]
-
-        public void CurrentNode_ReturnsLikeNode() //Test other two types
+        public void CurrentNode_ReturnsLikeNode()
         {
-            var httpContextHomeFullPath = new DefaultHttpContext();
-            httpContextHomeFullPath.Request.Path = "/Home/Like";
+            var context = CreateHttpContext("/Home/Like");
+            var node = _siteMap.CurrentNode(context);
 
-            var likeUsNode = _siteMap.CurrentNode(httpContextHomeFullPath);
-
-            Assert.Equal("Like Us", likeUsNode.Title);
-            Assert.Equal("How to like us", likeUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, likeUsNode.Roles);
-            Assert.Equal("/Home/Like", likeUsNode.Url);
-            Assert.Equal("Like_Res", likeUsNode.ResourceKey);
+            Assert.NotNull(node);
+            Assert.Equal("Like Us", node!.Title);
+            Assert.Equal("How to like us", node.Description);
+            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal("/Home/Like", node.Url);
+            Assert.Equal("Like_Res", node.ResourceKey);
         }
 
         [Fact]
         public void CurrentNode_Throws_WhenHttpContextIsNull()
         {
             Assert.Throws<ArgumentNullException>(() => _siteMap.CurrentNode(null));
-            var fakePathContext = new DefaultHttpContext();
-            fakePathContext.Request.Path = "/A/Random/NonPath/FakeNode";
-            Assert.Null(_siteMap.CurrentNode(fakePathContext));
         }
 
+        [Fact]
+        public void CurrentNode_ReturnsNull_WhenPathDoesNotExist()
+        {
+            var context = CreateHttpContext("/A/Random/NonPath/FakeNode");
+            var node = _siteMap.CurrentNode(context);
+            Assert.Null(node);
+        }
     }
 }

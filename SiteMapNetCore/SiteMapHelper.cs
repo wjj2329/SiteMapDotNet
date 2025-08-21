@@ -5,37 +5,64 @@ using System.Xml.Serialization;
 
 namespace SiteMapNetCore
 {
-    public class SiteMapHelper 
+    public static class SiteMapHelper
     {
+        // -------------------------
+        // Load / Deserialize
+        // -------------------------
         public static SiteMap ReadWebSiteMap(string siteMapFileName)
         {
             var serializer = new XmlSerializer(typeof(SiteMap));
-            using (var reader = new StreamReader(siteMapFileName))
+            using var reader = new StreamReader(siteMapFileName);
+
+            var deserialized = serializer.Deserialize(reader);
+            if (deserialized is SiteMap siteMap)
             {
-                var c = serializer.Deserialize(reader);
-                if (c is SiteMap siteMap)
-                {
-                    InitializeSiteMapNodes(siteMap);
-                    return siteMap;
-                }
-                throw new InvalidOperationException("Deserialization returned null or incorrect type.");
+                InitializeSiteMapNodes(siteMap);
+                return siteMap;
             }
+
+            throw new InvalidOperationException("Deserialization returned null or incorrect type.");
         }
-        private static void InitializeSiteMapNodes(SiteMap c)
+
+        // -------------------------
+        // Initialize site map nodes
+        // -------------------------
+        private static void InitializeSiteMapNodes(SiteMap siteMap)
         {
-            c.OnInitialized();
-            Queue<SiteMapNode> nodesQueue = new Queue<SiteMapNode>();
-            nodesQueue.Enqueue(c.RootNode);
-            SiteMapNode parent = c.RootNode;
+            // Initialize the root node first
+            siteMap.OnInitialized();
+
+            // BFS to initialize all nodes with root reference
+            var nodesQueue = new Queue<SiteMapNode>();
+            var rootNode = siteMap.RootNode;
+
+            nodesQueue.Enqueue(rootNode);
+
             while (nodesQueue.Count > 0)
             {
                 var currentNode = nodesQueue.Dequeue();
-                currentNode.OnInitialized(parent);
+                currentNode.OnInitialized(rootNode);
+
                 foreach (var child in currentNode.ChildNodes)
                 {
                     nodesQueue.Enqueue(child);
                 }
             }
+        }
+
+        // -------------------------
+        // Utility methods
+        // -------------------------
+        public static string FormatUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url)) return string.Empty;
+
+            if (url.StartsWith("~/")) return url.Substring(1); // ASP.NET style
+            if (url.StartsWith('/')) return url;               // Already correct
+
+            // Prepend slash if missing
+            return '/' + url;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
@@ -10,100 +9,114 @@ namespace SiteMapNetCore
     [XmlRoot("siteMapNode")]
     public class SiteMapNode
     {
+        // -------------------------
+        // Private fields
+        // -------------------------
+        private string _url;
+
+        // -------------------------
+        // Public properties
+        // -------------------------
+
+        // Child nodes
         [XmlElement("siteMapNode")]
-        public List<SiteMapNode> ChildNodes { get; set; }
+        public List<SiteMapNode> ChildNodes { get; init; } = new();
+
+        public bool HasChildNodes => ChildNodes.Count > 0;
+
+        // Standard attributes
         [XmlAttribute("title")]
-        public string? Title;
+        public string? Title { get; init; }
+
         [XmlAttribute("description")]
-        public string? Description;
+        public string? Description { get; init; }
+
         [XmlAttribute("url")]
-        public string Url;
+        public string Url
+        {
+            get => _url;
+            init => _url = SiteMapHelper.FormatUrl(value);
+        }
+
         [XmlAttribute("roles")]
-        public string? RolesString;
+        public string? RolesString { get; init; }
+
         [XmlAttribute("resourceKey")]
-        public string? ResourceKey;
-        // Capture any additional attributes
+        public string? ResourceKey { get; init; }
+
+        // Additional attributes
         [XmlAnyAttribute]
-        public XmlAttribute[]? AdditionalAttributes { get; set; }
-        public string this[string attributeName]
+        public XmlAttribute[]? AdditionalAttributes { get; init; }
+
+        public string? this[string attributeName]
         {
             get
             {
                 if (AdditionalAttributes == null)
                     return null;
+
                 var attr = AdditionalAttributes.FirstOrDefault(a => a.Name == attributeName);
                 return attr?.Value;
             }
         }
-        public bool HasChildNodes => ChildNodes.Count > 0;
-        public List<string> Roles
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(RolesString))
-                {
-                    return new List<string>();
-                }
-                return RolesString.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                                  .Select(r => r.Trim())
-                                  .ToList();
-            }
-        }
 
-        private SiteMapNode? parent_node;
-        private void SetParentNode(SiteMapNode node)
-        {
-            parent_node = node;
-        }
+        // Computed properties
+        public List<string> Roles => string.IsNullOrWhiteSpace(RolesString)
+            ? new List<string>()
+            : RolesString.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                         .Select(r => r.Trim())
+                         .ToList();
 
-        public SiteMapNode ParentNode => parent_node;
+        public string Key => string.IsNullOrEmpty(Url) ? "" : Url.TrimStart('/');
 
-        private SiteMapNode? previous_sibling;
-        private void SetPreviousSibling(SiteMapNode node)
-        {
-            previous_sibling = node;
-        }
-        public SiteMapNode PreviousSibling => previous_sibling;
+        // Tree navigation
+        [XmlIgnore]
+        public SiteMapNode? ParentNode { get; private set; }
+        [XmlIgnore]
+        public SiteMapNode? PreviousSibling { get; private set; }
+        [XmlIgnore]
+        public SiteMapNode? NextSibling { get; private set; }
+        [XmlIgnore]
+        public SiteMapNode? RootNode { get; private set; }
 
-        private SiteMapNode? next_sibling;
-        private void SetNextSibling(SiteMapNode node)
-        {
-            next_sibling = node;
-        }
-        public SiteMapNode NextSibling => next_sibling;
-
-        private SiteMapNode root_node = null;
-        public SiteMapNode RootNode => root_node;
-        private void SeRootNode(SiteMapNode node)
-        {
-            root_node = node;
-        }
-        public string Key => Url == null || Url.Length == 0 ? "" : Url.Substring(1);
+        // -------------------------
+        // Public methods
+        // -------------------------
         public void OnInitialized(SiteMapNode root)
         {
-            SeRootNode(root);
+            RootNode = root;
+
             for (int i = 0; i < ChildNodes.Count; i++)
             {
-                ChildNodes[i].SetParentNode(this);
-                if (i != 0)
-                {
-                    ChildNodes[i].SetPreviousSibling(ChildNodes[i - 1]);
-                }
-                if (i != ChildNodes.Count - 1)
-                {
-                    ChildNodes[i].SetNextSibling(ChildNodes[i + 1]);
-                }
+                var child = ChildNodes[i];
+                child.ParentNode = this;
+
+                if (i > 0) child.PreviousSibling = ChildNodes[i - 1];
+                if (i < ChildNodes.Count - 1) child.NextSibling = ChildNodes[i + 1];
+
+                // Recursively initialize children
+                child.OnInitialized(root);
             }
-        }
-        //copied from original netfw class
-        public override bool Equals(object obj)
-        {
-            if (obj is SiteMapNode siteMapNode && Key == siteMapNode.Key)
-            {
-                return string.Equals(Url, siteMapNode.Url, StringComparison.OrdinalIgnoreCase);
-            }
-            return false;
         }
 
+        // -------------------------
+        // Overrides
+        // -------------------------
+        public override bool Equals(object? obj)
+        {
+            return obj is SiteMapNode other &&
+                   string.Equals(Key, other.Key, StringComparison.OrdinalIgnoreCase) &&
+                   string.Equals(Url, other.Url, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public override int GetHashCode()
+        {
+            return Key?.ToLowerInvariant().GetHashCode() ?? 0;
+        }
+
+        public override string ToString()
+        {
+            return $"SiteMapNode: {Title ?? "(no title)"} ({Url ?? "(no url)"})";
+        }
     }
 }
