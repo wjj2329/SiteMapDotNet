@@ -29,14 +29,14 @@ By default, this will look for a `web.sitemap` file in your project's **content 
 You can also provide a **custom path** to your sitemap file:
 
 ```csharp
-builder.Services.AddSiteMapFromPath("Config/custom.sitemap");
+builder.Services.AddSiteMap("Config/custom.sitemap");
 ```
 
 ---
 
 ## Features
 
-* Supports **.NET 8**, compatible with .NET Core projects.
+* Supports **.NET 8**
 * Provides **SiteMap** and **SiteMapNode** classes similar to the original System.Web implementation.
 * Easy integration via DI with optional custom sitemap file path.
 
@@ -52,11 +52,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSiteMap();
 
 // Or using a custom sitemap file
-builder.Services.AddSiteMapFromPath("Config/my-sitemap.xml");
+builder.Services.AddSiteMap("Config/my-sitemap.xml");
 
 var app = builder.Build();
 ```
 
 ---
 
-💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMapFromPath`.
+💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMap`.
