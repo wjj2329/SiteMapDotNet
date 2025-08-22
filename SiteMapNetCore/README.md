@@ -36,7 +36,7 @@ builder.Services.AddSiteMapFromPath("Config/custom.sitemap");
 
 ## Features
 
-* Supports **.NET Standard 2.0**, compatible with .NET Core projects.
+* Supports **.NET8.0**, compatible with .NET Core projects.
 * Provides **SiteMap** and **SiteMapNode** classes similar to the original System.Web implementation.
 * Easy integration via DI with optional custom sitemap file path.
 
