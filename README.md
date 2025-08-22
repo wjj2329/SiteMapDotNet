@@ -32,7 +32,7 @@ By default, this will look for a `Web.sitemap` file in your project's **content 
 You can also provide a **custom path** to your sitemap file:
 
 ```csharp
-builder.Services.AddSiteMap("Config/Web.sitemap");
+builder.Services.AddSiteMapFromPath("Config/Web.sitemap");
 ```
 
 ---
