@@ -502,3 +502,6 @@ FodyWeavers.xsd
 /SiteMapNodeNetCore/bin/Debug/net8.0/SiteMapNodeNetCore.deps.json
 /SiteMapNodeNetCore/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
 /SiteMapNodeNetCore/obj/Debug/net8.0/SiteMapNodeNetCore.GlobalUsings.g.cs
+/.vs/SiteMapNetCore/CopilotIndices/17.14.939.21063/CodeChunks.db
+/.vs/SiteMapNetCore/CopilotIndices/17.14.939.21063/CodeChunks.db
+/.vs/SiteMapNetCore/CopilotIndices/17.14.939.21063/SemanticSymbols.db

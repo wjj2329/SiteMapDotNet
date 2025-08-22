@@ -6,9 +6,11 @@ namespace SiteMapNetCoreTest
     public class SiteMapTests
     {
         private readonly SiteMap _siteMap;
+        private readonly string[] _guestUserArr;
 
         public SiteMapTests()
         {
+            _guestUserArr = ["Guest", "User"];
             _siteMap = SiteMapHelper.ReadWebSiteMap("Web.sitemap");
         }
 
@@ -28,7 +30,7 @@ namespace SiteMapNetCoreTest
             Assert.NotNull(node);
             Assert.Equal("Contact Us", node!.Title);
             Assert.Equal("How to reach us", node.Description);
-            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal(_guestUserArr, node.Roles);
             Assert.Equal("/Home/Contact", node.Url);
             Assert.Equal("Contact_Res", node.ResourceKey);
         }
@@ -42,7 +44,7 @@ namespace SiteMapNetCoreTest
             Assert.NotNull(node);
             Assert.Equal("Find Us", node!.Title);
             Assert.Equal("How to find us", node.Description);
-            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal(_guestUserArr, node.Roles);
             Assert.Equal("/Home/Find", node.Url);
             Assert.Equal("Find_Res", node.ResourceKey);
         }
@@ -56,7 +58,7 @@ namespace SiteMapNetCoreTest
             Assert.NotNull(node);
             Assert.Equal("Like Us", node!.Title);
             Assert.Equal("How to like us", node.Description);
-            Assert.Equal(new[] { "Guest", "User" }, node.Roles);
+            Assert.Equal(_guestUserArr, node.Roles);
             Assert.Equal("/Home/Like", node.Url);
             Assert.Equal("Like_Res", node.ResourceKey);
         }

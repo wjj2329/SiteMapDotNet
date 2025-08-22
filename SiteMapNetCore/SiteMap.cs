@@ -17,7 +17,7 @@ namespace SiteMapNetCore
         // -------------------------
         // Private fields
         // -------------------------
-        private readonly Dictionary<string, SiteMapNode> _siteMapTable = new();
+        private readonly Dictionary<string, SiteMapNode> _siteMapTable = [];
 
         // -------------------------
         // Public methods

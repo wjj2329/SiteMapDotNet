@@ -15,6 +15,11 @@ namespace SiteMapNetCoreTest
         private readonly SiteMapNode _contactUsNode;
         private readonly SiteMapNode _findUsNode;
         private readonly SiteMapNode _likeUsNode;
+        private readonly string[] _adminUserGuestArr;
+        private readonly string[] _adminUserArr;
+        private readonly string[] _userArr;
+        private readonly string[] _guestUserArr;
+        private readonly string[] _adminArr;
 
         public SiteMapNodeTests()
         {
@@ -29,6 +34,11 @@ namespace SiteMapNetCoreTest
             _contactUsNode = _homeNode.ChildNodes[2];
             _findUsNode = _homeNode.ChildNodes[3];
             _likeUsNode = _homeNode.ChildNodes[4];
+            _adminUserGuestArr = ["Admin", "User", "Guest"];
+            _adminUserArr = ["Admin", "User"];
+            _userArr = ["User"];
+            _adminArr = ["Admin"];
+            _guestUserArr = ["Guest", "User"];
         }
 
         [Fact]
@@ -43,7 +53,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Home Page", _homeNode.Title);
             Assert.Equal("The main landing page of the site", _homeNode.Description);
-            Assert.Equal(new[] { "Admin", "User", "Guest" }, _homeNode.Roles);
+            Assert.Equal(_adminUserGuestArr, _homeNode.Roles);
             Assert.Equal("/Home/Index", _homeNode.Url);
             Assert.Equal("Home_Res", _homeNode.ResourceKey);
             Assert.Equal("foo", _homeNode["customAttr"]);
@@ -55,7 +65,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("About Us", _aboutUsNode.Title);
             Assert.Equal("Learn about our company", _aboutUsNode.Description);
-            Assert.Equal(new[] { "Admin", "User" }, _aboutUsNode.Roles);
+            Assert.Equal(_adminUserArr, _aboutUsNode.Roles);
             Assert.Equal("/Home/About", _aboutUsNode.Url);
             Assert.Equal("About_Res", _aboutUsNode.ResourceKey);
         }
@@ -65,7 +75,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Our History", _ourHistoryNode.Title);
             Assert.Equal("Company history page", _ourHistoryNode.Description);
-            Assert.Equal(new[] { "User" }, _ourHistoryNode.Roles);
+            Assert.Equal(_userArr, _ourHistoryNode.Roles);
             Assert.Equal("/Home/History", _ourHistoryNode.Url);
             Assert.Equal("History_Res", _ourHistoryNode.ResourceKey);
         }
@@ -75,7 +85,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Team & Staff", _teamNode.Title);
             Assert.Equal("Meet our team", _teamNode.Description);
-            Assert.Equal(new[] { "Admin", "User" }, _teamNode.Roles);
+            Assert.Equal(_adminUserArr, _teamNode.Roles);
             Assert.Equal("/Home/Team", _teamNode.Url);
             Assert.Equal("Team_Res", _teamNode.ResourceKey);
         }
@@ -85,7 +95,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Products", _productsNode.Title);
             Assert.Equal("What we offer", _productsNode.Description);
-            Assert.Equal(new[] { "Admin", "User" }, _productsNode.Roles);
+            Assert.Equal(_adminUserArr, _productsNode.Roles);
             Assert.Equal("/Products/Index", _productsNode.Url);
             Assert.Equal("Products_Res", _productsNode.ResourceKey);
         }
@@ -95,7 +105,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Product A", _productANode.Title);
             Assert.Equal("Details about Product A", _productANode.Description);
-            Assert.Equal(new[] { "User" }, _productANode.Roles);
+            Assert.Equal(_userArr, _productANode.Roles);
             Assert.Equal("/Products/A", _productANode.Url);
             Assert.Equal("ProdA_Res", _productANode.ResourceKey);
         }
@@ -105,7 +115,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Product B", _productBNode.Title);
             Assert.Equal("Details about Product B", _productBNode.Description);
-            Assert.Equal(new[] { "Admin" }, _productBNode.Roles);
+            Assert.Equal(_adminArr, _productBNode.Roles);
             Assert.Equal("/Products/B", _productBNode.Url);
             Assert.Equal("ProdB_Res", _productBNode.ResourceKey);
         }
@@ -115,7 +125,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Contact Us", _contactUsNode.Title);
             Assert.Equal("How to reach us", _contactUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, _contactUsNode.Roles);
+            Assert.Equal(_guestUserArr, _contactUsNode.Roles);
             Assert.Equal("/Home/Contact", _contactUsNode.Url);
             Assert.Equal("Contact_Res", _contactUsNode.ResourceKey);
         }
@@ -125,7 +135,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Find Us", _findUsNode.Title);
             Assert.Equal("How to find us", _findUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, _findUsNode.Roles);
+            Assert.Equal(_guestUserArr, _findUsNode.Roles);
             Assert.Equal("/Home/Find", _findUsNode.Url);
             Assert.Equal("Find_Res", _findUsNode.ResourceKey);
         }
@@ -135,7 +145,7 @@ namespace SiteMapNetCoreTest
         {
             Assert.Equal("Like Us", _likeUsNode.Title);
             Assert.Equal("How to like us", _likeUsNode.Description);
-            Assert.Equal(new[] { "Guest", "User" }, _likeUsNode.Roles);
+            Assert.Equal(_guestUserArr, _likeUsNode.Roles);
             Assert.Equal("/Home/Like", _likeUsNode.Url);
             Assert.Equal("Like_Res", _likeUsNode.ResourceKey);
         }

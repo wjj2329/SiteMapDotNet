@@ -58,7 +58,7 @@ namespace SiteMapNetCore
         {
             if (string.IsNullOrEmpty(url)) return string.Empty;
 
-            if (url.StartsWith("~/")) return url.Substring(1); // ASP.NET style
+            if (url.StartsWith("~/")) return url[1..]; // ASP.NET style
             if (url.StartsWith('/')) return url;               // Already correct
 
             // Prepend slash if missing

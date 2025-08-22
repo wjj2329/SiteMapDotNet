@@ -12,7 +12,7 @@ namespace SiteMapNetCore
         // -------------------------
         // Private fields
         // -------------------------
-        private string _url;
+        private string _url = string.Empty;
 
         // -------------------------
         // Public properties
@@ -20,7 +20,7 @@ namespace SiteMapNetCore
 
         // Child nodes
         [XmlElement("siteMapNode")]
-        public List<SiteMapNode> ChildNodes { get; init; } = new();
+        public List<SiteMapNode> ChildNodes { get; init; } = [];
 
         public bool HasChildNodes => ChildNodes.Count > 0;
 
@@ -32,7 +32,7 @@ namespace SiteMapNetCore
         public string? Description { get; init; }
 
         [XmlAttribute("url")]
-        public string Url
+        public required string Url
         {
             get => _url;
             init => _url = SiteMapHelper.FormatUrl(value);
@@ -62,10 +62,8 @@ namespace SiteMapNetCore
 
         // Computed properties
         public List<string> Roles => string.IsNullOrWhiteSpace(RolesString)
-            ? new List<string>()
-            : RolesString.Split(',', StringSplitOptions.RemoveEmptyEntries)
-                         .Select(r => r.Trim())
-                         .ToList();
+            ? []
+            : [.. RolesString.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(r => r.Trim())];
 
         public string Key => string.IsNullOrEmpty(Url) ? "" : Url.TrimStart('/');
 
