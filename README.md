@@ -1,6 +1,6 @@
 # SiteMapNetCore
 
-This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET Core** projects.
+This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET 8** projects.
 
 See the official .NET Framework documentation here: [System.Web.SiteMap](https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1).
 
