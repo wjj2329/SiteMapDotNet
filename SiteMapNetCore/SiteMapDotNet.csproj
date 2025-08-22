@@ -3,14 +3,14 @@
   <!-- Global Properties -->
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <PackageId>SiteMapNetCore</PackageId>
+    <PackageId>SiteMapDotNet</PackageId>
     <Version>1.0.0</Version>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>moonstone.png</PackageIcon>
-    <PackageTags>sitemap;aspnetcore;mvc;navigation;seo;xml;site;web;url;routing;netcore;net8;netstandard;sitemapnode</PackageTags>
+    <PackageTags>sitemap;aspnetcore;mvc;navigation;dotnet;seo;xml;site;web;url;routing;netcore;net8;sitemapnode</PackageTags>
     <RepositoryUrl>https://github.com/wjj2329/SiteMapNetCore</RepositoryUrl>
 
     <!-- Compilation & Debug -->
