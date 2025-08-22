@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Hosting;
 using System.IO;
 
-namespace SiteMapNetCore
+namespace SiteMapDotNet
 {
     public static class SiteMapServiceCollectionExtensions
     {
-        public static IServiceCollection AddSiteMap(this IServiceCollection services, string siteMapFileName = "web.sitemap")
+        public static IServiceCollection AddSiteMap(this IServiceCollection services, string siteMapFileName = "Web.sitemap")
         {
             services.AddSingleton(sp =>
             {
@@ -17,6 +17,15 @@ namespace SiteMapNetCore
                 return SiteMapHelper.ReadWebSiteMap(path);
             });
 
+            return services;
+        }
+        public static IServiceCollection AddSiteMapFromPath(this IServiceCollection services, string siteMapFilePath)
+        {
+            services.AddSingleton(sp =>
+            {
+                // your hidden static method call
+                return SiteMapHelper.ReadWebSiteMap(siteMapFilePath);
+            });
             return services;
         }
     }

@@ -1,6 +1,6 @@
-# SiteMapNetCore
+# SiteMapDotNet
 
-This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET Core** projects.
+This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET** projects.
 
 See the official .NET Framework documentation here: [System.Web.SiteMap](https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1).
 
@@ -11,7 +11,7 @@ See the official .NET Framework documentation here: [System.Web.SiteMap](https:/
 Install via NuGet:
 
 ```bash
-dotnet add package SiteMapNetCore
+dotnet add package SiteMapDotNet
 ```
 
 ---

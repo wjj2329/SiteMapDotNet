@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace SiteMapNetCore
+namespace SiteMapDotNet
 {
     [XmlRoot("siteMapNode")]
     public class SiteMapNode

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMapNetCoreTest", "SiteMapNetCoreTest\SiteMapNetCoreTest.csproj", "{01FC6D6A-D06A-4C7D-9944-CE2D4A630347}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMapDotNetTest", "SiteMapNetCoreTest\SiteMapDotNetTest.csproj", "{01FC6D6A-D06A-4C7D-9944-CE2D4A630347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMapNetCore", "SiteMapNetCore\SiteMapNetCore.csproj", "{6072BD54-FC57-DCC7-A9C5-DF62595911F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMapDotNet", "SiteMapNetCore\SiteMapDotNet.csproj", "{6072BD54-FC57-DCC7-A9C5-DF62595911F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

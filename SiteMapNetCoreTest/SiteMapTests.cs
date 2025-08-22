@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using SiteMapNetCore;
+using SiteMapDotNet;
 
-namespace SiteMapNetCoreTest
+namespace SiteMapDotNetTest
 {
     public class SiteMapTests
     {

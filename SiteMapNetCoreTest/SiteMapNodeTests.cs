@@ -1,6 +1,6 @@
-using SiteMapNetCore;
+using SiteMapDotNet;
 
-namespace SiteMapNetCoreTest
+namespace SiteMapDotNetTest
 {
     public class SiteMapNodeTests
     {

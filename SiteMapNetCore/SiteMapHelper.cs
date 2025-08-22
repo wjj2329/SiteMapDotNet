@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace SiteMapNetCore
+namespace SiteMapDotNet
 {
     public static class SiteMapHelper
     {
