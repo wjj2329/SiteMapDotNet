@@ -14,6 +14,9 @@ Install via NuGet:
 dotnet add package SiteMapNetCore
 ```
 
+```package reference
+<PackageReference Include="SiteMapNetCore" Version="1.0.0" />
+```
 ---
 
 ## Usage
@@ -24,12 +27,12 @@ To register the SiteMap in your **Dependency Injection (DI)** container:
 builder.Services.AddSiteMap();
 ```
 
-By default, this will look for a `web.sitemap` file in your project's **content root**.
+By default, this will look for a `Web.sitemap` file in your project's **content root**.
 
 You can also provide a **custom path** to your sitemap file:
 
 ```csharp
-builder.Services.AddSiteMap("Config/custom.sitemap");
+builder.Services.AddSiteMap("Config/Web.sitemap");
 ```
 
 ---
@@ -42,21 +45,5 @@ builder.Services.AddSiteMap("Config/custom.sitemap");
 
 ---
 
-## Example
-
-```csharp
-// Startup.cs or Program.cs
-var builder = WebApplication.CreateBuilder(args);
-
-// Registers the SiteMap using default file path
-builder.Services.AddSiteMap();
-
-// Or using a custom sitemap file
-builder.Services.AddSiteMap("Config/my-sitemap.xml");
-
-var app = builder.Build();
-```
-
----
 
 💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMap`.
