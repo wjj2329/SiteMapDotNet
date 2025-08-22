@@ -66,7 +66,7 @@ namespace SiteMapDotNetTest
         [Fact]
         public void CurrentNode_Throws_WhenHttpContextIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => _siteMap.CurrentNode(null));
+            Assert.Null(_siteMap.CurrentNode(null));
         }
 
         [Fact]

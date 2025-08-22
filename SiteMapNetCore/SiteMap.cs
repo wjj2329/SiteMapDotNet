@@ -25,7 +25,7 @@ namespace SiteMapDotNet
         public SiteMapNode? CurrentNode(HttpContext httpContext)
         {
             if (httpContext?.Request?.Path == null)
-                throw new ArgumentNullException(nameof(httpContext), "HttpContext or Request Path cannot be null.");
+                return null;
 
             return GetNodeByPath(httpContext.Request.Path.ToString());
         }
