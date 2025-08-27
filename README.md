@@ -1,4 +1,5 @@
 # SiteMapDotNet
+[![NuGet Version](https://img.shields.io/nuget/v/SiteMapDotNet.svg?style=flat-square)](https://www.nuget.org/packages/SiteMapDotNet/)
 
 This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET 8** projects.
 
