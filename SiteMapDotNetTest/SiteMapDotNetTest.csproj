@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SiteMapNetCore\SiteMapDotNet.csproj" />
+    <ProjectReference Include="..\SiteMapDotNet\SiteMapDotNet.csproj" />
   </ItemGroup>
 
   <ItemGroup>
