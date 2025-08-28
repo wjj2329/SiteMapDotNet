@@ -47,4 +47,4 @@ builder.Services.AddSiteMapFromPath("Config/Web.sitemap");
 ---
 
 
-💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMap`.
+💡 **Tip:** Ensure your sitemap file is included in your project output, or provide the correct path to `AddSiteMapFromPath`.
