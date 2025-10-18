@@ -1,7 +1,7 @@
 # SiteMapDotNet
 [![NuGet Version](https://img.shields.io/nuget/v/SiteMapDotNet.svg?style=flat-square)](https://www.nuget.org/packages/SiteMapDotNet/)
 
-This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET 8** projects.
+This library is intended as a **drop-in replacement for the `System.Web.SiteMap` functionality** found in .NET Framework, for use in **.NET 8** and **.NET 9** projects.
 
 See the official .NET Framework documentation here: [System.Web.SiteMap](https://learn.microsoft.com/en-us/dotnet/api/system.web.sitemap?view=netframework-4.8.1).
 
@@ -40,7 +40,7 @@ builder.Services.AddSiteMapFromPath("Config/Web.sitemap");
 
 ## Features
 
-* Supports **.NET 8**
+* Supports **.NET 8** and **.NET 9**
 * Provides **SiteMap** and **SiteMapNode** classes similar to the original System.Web implementation.
 * Easy integration via DI with optional custom sitemap file path.
 
