@@ -4,7 +4,7 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0; net9.0</TargetFrameworks>
     <PackageId>SiteMapDotNet</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -13,7 +13,7 @@
     <PackageTags>sitemap;aspnetcore;mvc;navigation;dotnet;seo;xml;site;web;url;routing;netcore;net8;net9;sitemapnode</PackageTags>
     <RepositoryUrl>https://github.com/wjj2329/SiteMapDotNet</RepositoryUrl>
     <PackageReleaseNotes>
-      - Update project to multi target net8 and net9 bringing in net9 support
+      - Update project reference libraries to latest versions.
     </PackageReleaseNotes>
     <!-- Compilation & Debug -->
     <Nullable>enable</Nullable>
@@ -32,7 +32,7 @@
   <!-- Dependencies (alphabetized) -->
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.10" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
