@@ -16,7 +16,7 @@ dotnet add package SiteMapDotNet
 ```
 
 ```package reference
-<PackageReference Include="SiteMapDotNet" Version="3.0.2" />
+<PackageReference Include="SiteMapDotNet" Version="3.0.3" />
 ```
 ---
 
