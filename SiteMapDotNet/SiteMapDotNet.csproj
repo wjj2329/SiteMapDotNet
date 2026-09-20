@@ -4,7 +4,7 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0; net9.0; net10.0</TargetFrameworks>
     <PackageId>SiteMapDotNet</PackageId>
-    <Version>3.0.6</Version>
+    <Version>3.0.7</Version>
     <Authors>William Jones</Authors>
     <Description>SiteMap and SiteMapNode replacement classes for ASP.NET Core</Description>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -13,7 +13,7 @@
     <PackageTags>sitemap;aspnetcore;mvc;navigation;dotnet;seo;xml;site;web;url;routing;netcore;net8;net9;net10;sitemapnode</PackageTags>
     <RepositoryUrl>https://github.com/wjj2329/SiteMapDotNet</RepositoryUrl>
     <PackageReleaseNotes>
-      - Update project libraries to latest version August 11th 2026
+      - Update project libraries to latest version September 20th 2026
     </PackageReleaseNotes>
     <!-- Compilation & Debug -->
     <Nullable>enable</Nullable>
@@ -31,9 +31,9 @@
 
   <!-- Dependencies (alphabetized) -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.12" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.11" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.13" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.12" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.401" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- Files to include in NuGet package -->
